@@ -1,14 +1,33 @@
-//these defines the time interval between each break
-var deadline = setInterval(myTimer, 1000);
-var now = new Date();
-var t = deadline.getTime - now.getTime;
+// let changeColor = document.getElementById('changeColor');
 
-// this is to determine if it's time for a break
-// if time's up, the popup.html will jump out
-function comparison() {
-  if (t == 10000) {
-    window.location.href = 'popup.html';
-  }
+// chrome.storage.sync.get('color', function(data) {
+//     changeColor.style.backgroundColor = data.color;
+//     changeColor.setAttribute('value', data.color);
+// });
+
+// changeColor.onclick = function(element) {
+//     let color = element.target.value;
+//     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+//       chrome.tabs.executeScript(
+//           tabs[0].id,
+//           {code: 'document.body.style.backgroundColor = "' + color + '";'});
+//     });
+// };
+
+//var scripts = 'functions.js';
+function start(){
+    alert("hello");
 }
 
-comparison();
+
+let test = document.getElementById('test');
+test.onclick = function(element) {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.executeScript(
+          tabs[0].id,
+          {code: 'setTimeout(function(){ alert("Hello"); }, time)'},
+          
+          )
+    });
+};
+
